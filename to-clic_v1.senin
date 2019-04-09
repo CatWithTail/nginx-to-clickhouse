@@ -11,7 +11,7 @@ couner=0
 #head -n 7 nginx.org.log.2 | while read string
 cat $1 | while read string
     do  let " couner = couner + 1 "
-        if (( $(echo $string | grep -c "[0-9]") > 0 ))
+        if (( $(echo $string | grep -c ^"[0-9]") > 0 ))
         then
            echo $string | tr '"' ' ' | while read my_string[0] my_string[1] my_string[2] my_string[3] my_string[4] my_string[5] my_string[6] my_string[7] my_string[8] my_string[9] my_string[10] my_string[11]
             do my_string[12]=$(echo ${my_string[11]} | awk '{print $(NF)}')
